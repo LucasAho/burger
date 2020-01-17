@@ -1,33 +1,49 @@
 <h1>Eat-Da-Burger</h1>
 
 <!--User input block-->
-<form class="create-form">
+<form class="create-burger">
 
     <div class="form-group">
         <label for="newBurger">New Burger:</label>
         <input type="text" id="newBurger" name="burger_name">
     </div>
 
-    <button type="submit">Submit</button>
+    <button id="newBurger" type="submit">Submit</button>
 </form>
 
 <h2>Fresh Burgers</h2>
-<ul>
-    {{#each burgers}}
-        {{#unless devoured}}
-            {{> burgers/burger-block devoured=true}}
-        {{/unless}}
-    {{/each}}
-</ul>
+<div class = "container">
+    <ul>
+        {{#each burgers}}
 
-<h2>Devoured Burgers</h2>
-<ul>
-    {{#each burgers}}
-        {{#if devoured}}
-            {{> burgers/burger-block devoured=false}}
-        {{/if}}
-    {{/each}}
-</ul>
-<!--Column on left holds burger boxes--> <!--Devour it button--> <!--Grayed out burger box when eaten-->
-<!--Button submit-->
-<p>Just enter a burger you want to eat and click the Submit button!</p>
+        
+            {{#unless devoured}}
+            <div class="uneaten-Burger">
+                {{burger_name}}
+                <button id="devourIt">Devour It</button>
+            </div>
+            
+            {{/unless}}
+        
+        {{/each}}
+    </ul>
+
+    <h2>Devoured Burgers</h2>
+    <ul >
+        {{#each burgers}}
+        
+            {{#if devoured}}
+                <div class="col-3">
+                    {{burger_name}}
+                    
+                </div>
+                <br>
+            {{/if}}
+        
+        {{/each}}
+
+    </ul>
+    <!--Column on left holds burger boxes--> <!--Devour it button--> <!--Grayed out burger box when eaten-->
+    <!--Button submit-->
+    <p>Just enter a burger you want to eat and click the Submit button!</p>
+</div>
