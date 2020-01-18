@@ -7,10 +7,7 @@ $(function() {
 
         var newEatenState = {
             devoured: newDevoured
-        }
-
-        console.log("Hi there");
-    
+        }    
 
         $.ajax("/api/burgers/" + btnValue, {
             type: "PUT",
