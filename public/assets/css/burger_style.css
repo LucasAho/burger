@@ -1,5 +1,21 @@
+
 .uneaten-Burger {
-    width: 100px;
-    height: 200px;
-    background-color: blue;
+    text-align: center;
+    width: 200px;
+    height: 75px;
+}
+.eaten-Burger {
+    text-align: center;
+
+    background-color: rgba(128, 128, 128, 0.678);
+}
+
+.cssBurger {
+    width: 80%;
+    height: 150px;
+}
+
+body {
+    height: 100%;
+    background-color: rgb(139, 139, 27);
 }

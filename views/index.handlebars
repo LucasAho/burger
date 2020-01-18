@@ -1,51 +1,67 @@
 <div class = "container">
-    
-<h1>Eat-Da-Burger</h1>
 
-<!--User input block-->
-<form class="create-burger">
-
-    <div class="form-group">
-        <label for="newBurger">New Burger:</label>
-        <input type="text" id="newBurger" name="burger_name">
+    <div class="row d-flex justify-content-center mt-4">  
+               
+        <img src="/assets/images/burger-img.jpg" width="25%" height="25%">
+        
+        <div class="col-12 text-center my-3">
+            <h1 class="text-danger">Eat-Da-Burger</h1>
+        </div> 
     </div>
 
-    <button id="newBurger" type="submit">Submit</button>
-</form>
-
-<h2>Fresh Burgers</h2>
-
-    <ul>
-        {{#each burgers}}
-
+    <div class="row mt-4">
         
-            {{#unless devoured}}
-            <div class="uneaten-Burger">
-                {{burger_name}}
-                <button id="devourIt">Devour It</button>
-            </div>
+        <div class="col-6">
+            <ul>
+                {{#each burgers}}
+
+                
+                    {{#unless devoured}}
+                    <div class="col-6 bg-secondary float-left uneaten-Burger p-3">
+                        {{burger_name}}         
+                        
+                    </div>
+
+                    <div class="float-right">
+                        <button class="btn btn-secondary" id="devourIt">Devour It</button>
+                    </div>
+                    {{/unless}}
+                
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="col-3 justify-content-right">
+            <ol>
+                
+                {{#each burgers}}
+                
+                    {{#if devoured}}
+                        <li class="eaten-Burger p-3">
+                            {{burger_name}}                            
+                        </li>
+                        
+                    {{/if}}
+                
+                {{/each}}
+</div>
+            </ol>
+        </div>
+
+    </div>
+
+     <!--User input block-->
+    <div class="row d-flex justify-content-center">
+        
+        <form class="create-burger col-12 text-center mt-3">
+
+            <input type="text" class="cssBurger text-center" id="newBurger" name="burger_name">
+            <br>
+            <button id="newBurger" class="btn btn-primary mt-2" type="submit">Submit</button>
             
-            {{/unless}}
-        
-        {{/each}}
-    </ul>
+        </form>
 
-    <h2>Devoured Burgers</h2>
-    <ul >
-        {{#each burgers}}
-        
-            {{#if devoured}}
-                <div class="col-3">
-                    {{burger_name}}
-                    
-                </div>
-                <br>
-            {{/if}}
-        
-        {{/each}}
-
-    </ul>
-    <!--Column on left holds burger boxes--> <!--Devour it button--> <!--Grayed out burger box when eaten-->
-    <!--Button submit-->
+    </div>
+  
     <p>Just enter a burger you want to eat and click the Submit button!</p>
 </div>

@@ -7,31 +7,29 @@ $(function() {
             sleepy: newDevoured
         }
         console.log(newDevoured);
+    
+
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: newEatenState
+        }).then(function() {
+                console.log("Burger devoured");
+                location.reload();
+            });
     });
 
-    $.ajax("/api/burgers/" + id, {
-        type: "PUT",
-        data: newEatenState
-    }).then(function() {
-            console.log("Burger devoured");
-            location.reload();
+    $(".create-burger").on("submit", event => {
+        event.preventDefault();
+
+        var newBurger = {
+            name: $("#newBurger").val().trim()
         }
-    );
-});
-
-$(".create-burger").on("submit", event => {
-    event.preventDefault();
-
-    var newBurger = {
-        name: $("#newBurger").val().trim()
-    }
-    $.ajax("api/cats", {
-        type: "POST",
-        data: newBurger
-    }).then(
-        function() {
+        $.ajax("api/cats", {
+            type: "POST",
+            data: newBurger
+        }).then(function() {
             console.log("New burger added");
             location.reload;
-        }
-    )
-})
+        });
+    });
+});
