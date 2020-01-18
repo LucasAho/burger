@@ -17,16 +17,19 @@
 
                 
                     {{#unless devoured}}
+                    <div class="row mx-3">
                     <div class="col-6 bg-secondary float-left uneaten-Burger p-3">
-                        {{burger_name}}         
-                        
+                        {{burger_name}}                            
                     </div>
 
                     <div class="float-right">
-                        <button class="btn btn-secondary" id="devourIt">Devour It</button>
+                        <button class="btn btn-secondary devourIt mx-5" id="eatBtn" value={{id}} type="submit">Devour It</button>
                     </div>
+                   
+                    </div>
+                     <br>
                     {{/unless}}
-                
+                    
                 {{/each}}
             </ul>
         </div>
@@ -53,15 +56,18 @@
      <!--User input block-->
     <div class="row d-flex justify-content-center">
         
-        <form class="create-burger col-12 text-center mt-3">
-
-            <input type="text" class="cssBurger text-center" id="newBurger" name="burger_name">
-            <br>
-            <button id="newBurger" class="btn btn-primary mt-2" type="submit">Submit</button>
+        <form class="create-form col-12 text-center mt-3">
+            <div class="form-group">
+                <input type="text" class="cssBurger text-center" id="newBurger">
+                <br>
+                
+            </div>
             
+            <p>Just enter a burger you want to eat and click the Submit button!</p>
+            <button class="btn btn-primary mt-2" type="submit">Submit</button>
         </form>
 
     </div>
   
-    <p>Just enter a burger you want to eat and click the Submit button!</p>
+    
 </div>

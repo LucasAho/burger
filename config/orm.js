@@ -11,6 +11,23 @@ printMysqlVars = (num)  => {
     return arr.toString();
 }
 
+objToSql = obj => {
+    var arr = [];
+
+    for(var key in obj) {
+        var value = obj[key];
+
+        if (Object.hasOwnProperty.call(obj, key)) {
+            if (typeof value === "string" && value.indexOf(" ") >= 0) {
+                value = "'" + value + "'";
+
+            }
+            arr.push(key + " = " + value);
+        }
+
+    }
+    return arr.toString();
+}
 
 var orm = {
     selectAll: (tableInput, cb) => {
@@ -46,7 +63,7 @@ var orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, vals, (err, result) => {
+        connection.query(queryString, (err, result) => {
             if (err) throw err;
 
             cb(result);

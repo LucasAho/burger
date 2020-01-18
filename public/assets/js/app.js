@@ -1,15 +1,18 @@
 $(function() {
-    $("#devourIt").on("click", event => {
-        var id = $(this).data("id");
-        var newDevoured = $(this).data("newEats");
+    $(".devourIt").on("click", event => {
+        event.preventDefault();
+        var btnValue = $("#eatBtn").val();
+
+        var newDevoured = 1;
 
         var newEatenState = {
-            sleepy: newDevoured
+            devoured: newDevoured
         }
-        console.log(newDevoured);
+
+        console.log("Hi there");
     
 
-        $.ajax("/api/burgers/" + id, {
+        $.ajax("/api/burgers/" + btnValue, {
             type: "PUT",
             data: newEatenState
         }).then(function() {
@@ -18,18 +21,20 @@ $(function() {
             });
     });
 
-    $(".create-burger").on("submit", event => {
+    $(".create-form").on("submit", event => {
         event.preventDefault();
-
+       
         var newBurger = {
-            name: $("#newBurger").val().trim()
+            burger_name: $("#newBurger").val().trim(),
+            devoured: 0
         }
-        $.ajax("api/cats", {
+
+        $.ajax("api/burgers", {
             type: "POST",
             data: newBurger
         }).then(function() {
             console.log("New burger added");
-            location.reload;
+            location.reload();
         });
     });
 });
